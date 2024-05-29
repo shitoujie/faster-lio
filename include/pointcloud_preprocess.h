@@ -53,6 +53,22 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(ouster_ros::Point,
                                   )
 // clang-format on
 
+namespace leishen_ros {
+struct EIGEN_ALIGN16 Point {
+    PCL_ADD_POINT4D;
+    float intensity;
+    float time;
+    std::uint16_t ring;
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+};
+}  // namespace leishen_ros
+
+// clang-format off
+POINT_CLOUD_REGISTER_POINT_STRUCT(leishen_ros::Point,
+                                  (float, x, x)(float, y, y)(float, z, z)(float, intensity, intensity)
+                                      (float, time, time)(std::uint16_t, ring, ring))
+// clang-format on
+
 namespace faster_lio {
 
 enum class LidarType { AVIA = 1, VELO32, OUST64, C16 };
