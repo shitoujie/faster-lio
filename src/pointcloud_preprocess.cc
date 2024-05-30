@@ -194,7 +194,7 @@ void PointCloudPreprocess::VelodyneHandler(const sensor_msgs::PointCloud2::Const
 void PointCloudPreprocess::C16Handler(const sensor_msgs::PointCloud2::ConstPtr &msg) {
     cloud_out_.clear();
     cloud_full_.clear();
-    pcl::PointCloud<ouster_ros::Point> pl_orig;
+    pcl::PointCloud<leishen_ros::Point> pl_orig;
     pcl::fromROSMsg(*msg, pl_orig);
     int plsize = pl_orig.size();
     cloud_out_.reserve(plsize);
