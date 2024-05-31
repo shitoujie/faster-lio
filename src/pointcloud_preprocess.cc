@@ -216,7 +216,7 @@ void PointCloudPreprocess::C16Handler(const sensor_msgs::PointCloud2::ConstPtr &
         added_pt.normal_x = 0;
         added_pt.normal_y = 0;
         added_pt.normal_z = 0;
-        added_pt.curvature = pl_orig.points[i].t / 1e6;  // curvature unit: ms
+        added_pt.curvature = pl_orig.points[i].time / 1e6;  // curvature unit: ms
 
         cloud_out_.points.push_back(added_pt);
     }
