@@ -746,8 +746,9 @@ void LaserMapping::PublishFrameWorld() {
         scan_wait_num++;
         if (pcl_wait_save_->size() > 0 && pcd_save_interval_ > 0 && scan_wait_num >= pcd_save_interval_) {
             pcd_index_++;
-            std::string all_points_dir(std::string(std::string(ROOT_DIR) + "PCD/scans_") + std::to_string(pcd_index_) +
-                                       std::string(".pcd"));
+            // std::string all_points_dir(std::string(std::string(ROOT_DIR) + "PCD/scans_") + std::to_string(pcd_index_) +
+            //                            std::string(".pcd"));
+            std::string all_points_dir(std::string(std::string(ROOT_DIR) + "../../../system/map/lite3") + std::string(".pcd"));
             pcl::PCDWriter pcd_writer;
             LOG(INFO) << "current scan saved to /PCD/" << all_points_dir;
             pcd_writer.writeBinary(all_points_dir, *pcl_wait_save_);
@@ -855,10 +856,13 @@ void LaserMapping::Finish() {
     /* 1. make sure you have enough memories
     /* 2. pcd save will largely influence the real-time performences **/
     if (pcl_wait_save_->size() > 0 && pcd_save_en_) {
-        std::string file_name = std::string("scans.pcd");
-        std::string all_points_dir(std::string(std::string(ROOT_DIR) + "PCD/") + file_name);
+        // std::string file_name = std::string("scans.pcd");
+        // std::string all_points_dir(std::string(std::string(ROOT_DIR) + "PCD/") + file_name);
+        // std::string file_name = std::string("lite3.pcd");
+        std::string all_points_dir(std::string(std::string(ROOT_DIR) + "../../../system/map/lite3") + std::string(".pcd"));
         pcl::PCDWriter pcd_writer;
-        LOG(INFO) << "current scan saved to /PCD/" << file_name;
+        // LOG(INFO) << "current scan saved to /PCD/" << file_name;
+        LOG(INFO) << "current scan saved to " << all_points_dir;
         pcd_writer.writeBinary(all_points_dir, *pcl_wait_save_);
     }
 
